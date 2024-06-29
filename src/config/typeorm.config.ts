@@ -9,7 +9,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions | Promise<TypeOrmModuleOptions> {
     if (process.env.NODE_ENV !== 'production') {
       return {
-        type: process.env.NODE_ENV === 'production' ? 'postgres' : 'sqlite',
+        type: 'sqlite',
         synchronize: process.env.NODE_ENV === 'test' ? true : false,
         database: this.configService.get<string>('DB_NAME'),
         autoLoadEntities: true,
@@ -20,7 +20,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
     return {
       type: 'postgres',
       synchronize: false,
-      database: this.configService.get<string>('DB_NAME'),
+      database: process.env.DB_NAME,
       autoLoadEntities: true,
       migrationsRun: true,
       keepConnectionAlive: true,
