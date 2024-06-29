@@ -24,7 +24,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       autoLoadEntities: true,
       migrationsRun: true,
       keepConnectionAlive: true,
-      port: +this.configService.get<string>('PORT'),
+      port: +this.configService.get<string>('DB_PORT'),
       host: process.env.HOST,
       username: process.env.USERNAME,
       password: process.env.PASSWORD,
