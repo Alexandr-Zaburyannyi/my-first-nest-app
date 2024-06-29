@@ -24,6 +24,10 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       autoLoadEntities: true,
       migrationsRun: true,
       keepConnectionAlive: true,
+      port: process.env.PORT as unknown as number,
+      host: process.env.HOST,
+      username: process.env.USERNAME,
+      password: process.env.PASSWORD,
       url: process.env.DATABASE_URL,
       ssl: {
         rejectUnauthorized: false,
